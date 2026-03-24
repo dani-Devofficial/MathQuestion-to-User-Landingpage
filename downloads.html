@@ -1,3 +1,101 @@
-<DOCTYPE html>
-  <html lang="ko"
-</DOCTYPE>
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MathQ 다운로드</title>
+    <meta
+    <link rel="stylesheet" href="./style.css" />
+      content="MathQ 최신 버전 다운로드 페이지"
+        <a class="brand" href="./index.html">MathQ</a>
+        <nav class="site-nav" aria-label="주요 메뉴">
+          <a href="./index.html#about">서비스 소개</a>
+          <a href="./index.html#feature">주요 기능</a>
+          <a href="./index.html#contact">문의</a>
+          <a href="./downloads.html">다운로드</a>
+        </nav>
+        <nav class="site-nav" aria-label="주요 메뉴">
+          <a href="./index.html#about">서비스 소개</a>
+          <a href="./index.html#feature">주요 기능</a>
+          <a href="./index.html#contact">문의</a>
+        </nav>
+        <a class="header-button" href="./downloads.html">무료 체험</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="downloads">
+        <div class="container">
+          <p class="eyebrow">Downloads</p>
+          <h1>MathQ 다운로드</h1>
+          <p class="hero-text">
+            최신 버전의 MathQ를 다운로드하여 지금 바로 시작하세요.
+          </p>
+          
+          <div class="version-list" id="versionList">
+            <!-- Versions will be loaded here by JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 MathQ</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const versionList = document.getElementById('versionList');
+        
+        // Load versions from XML
+        fetch('./vers.xml')
+          .then(response => response.text())
+          .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+          .then(data => {
+            const versions = data.getElementsByTagName('version');
+            let html = '';
+            
+            for (let i = 0; i < versions.length; i++) {
+              const version = versions[i];
+              const versionNumber = version.getElementsByTagName('number')[0].textContent;
+              const date = version.getElementsByTagName('date')[0].textContent;
+              const downloadLink = version.getElementsByTagName('download')[0].textContent;
+              const changes = version.getElementsByTagName('change');
+              
+              html += `
+                <article class="version-card">
+                  <div class="version-header">
+                    <h2>버전 ${versionNumber}</h2>
+                    <span class="version-date">${date}</span>
+                  </div>
+                  <div class="version-changes">
+                    <h3>업데이트 내용</h3>
+                    <ul>
+              `;
+              
+              for (let j = 0; j < changes.length; j++) {
+                html += `<li>${changes[j].textContent}</li>`;
+              }
+              
+              html += `
+                    </ul>
+                  </div>
+                  <a class="button button-primary" href="${downloadLink}" download>
+                    다운로드
+                  </a>
+                </article>
+              `;
+            }
+            
+            versionList.innerHTML = html;
+          })
+          .catch(error => {
+            console.error('Error loading versions:', error);
+            versionList.innerHTML = '<p>버전 정보를 불러오는 중 오류가 발생했습니다.</p>';
+          });
+      });
+    </script>
+  </body>
+</html>

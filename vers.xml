@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<versions>
+  <version>
+    <number>1.2.0</number>
+    <date>2026-04-15</date>
+    <changes>
+      <change>새로운 문제 추천 알고리즘 적용</change>
+      <change>사용자 인터페이스 개선</change>
+      <change>버그 수정 및 성능 향상</change>
+    </changes>
+    <download>https://example.com/download/mathq-1.2.0.exe</download>
+  </version>
+  <version>
+    <number>1.1.5</number>
+    <date>2026-03-22</date>
+    <changes>
+      <change>문제 데이터베이스 확장</change>
+      <change>모바일 뷰 최적화</change>
+      <change>학습 기록 기능 추가</change>
+    </changes>
+    <download>https://example.com/download/mathq-1.1.5.exe</download>
+  </version>
+  <version>
+    <number>1.1.0</number>
+    <date>2026-02-10</date>
+    <changes>
+      <change>티어 시스템 개선</change>
+      <change>새로운 레벨 테스트 추가</change>
+      <change>UI/UX 개선</change>
+    </changes>
+    <download>https://example.com/download/mathq-1.1.0.exe</download>
+  </version>
+  <version>
+    <number>1.0.0</number>
+    <date>2026-01-05</date>
+    <changes>
+      <change>초기 릴리즈</change>
+      <change>기본 문제 추천 기능</change>
+      <change>사용자 등록 시스템</change>
+    </changes>
+    <download>https://example.com/download/mathq-1.0.0.exe</download>
+  </version>
+</versions>
